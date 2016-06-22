@@ -2,6 +2,7 @@ function showInOutput(str, newLn = true, tab = 0) {
     var out = $('#output');
     if (newLn) out.append('<br>');
     for (var i = 0; i < tab; i++) out.append('    ');
+    out.append(str);
 }
 
 

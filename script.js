@@ -33,49 +33,83 @@ var f = function () {
 ($(document).ready(function () {
     $('#output').html("Output:<br>");
     $(document).on('keydown', function (e) {
-        if (e.which === 190 || e.which === 110) calcButton('period');
-        else if (e.which === 43 || e.which === 107) calcButton('plus');
-        else if (e.which === 47) calcButton('divide');
-        else if (e.which === 27 || e.which === 46) calcButton('clear');
-        else {
-            var a = e.which - 48;
-            if (a >= 0 && a <= 9) calcButton(a);
-            else if (a >= 48 && a <= 57) calcButton(a - 48);
-            else alert(e.which);
+        switch (e.which) {
+            case 115:
+                if (e.ctrlKey || e.which === 19) e.preventDefault();
+                break;
+            case 13:
+                calcButton('equal');
+                break;
+            case 190:
+            case 110:
+                calcButton('period');
+                break;
+            case 43:
+            case 107:
+                calcButton('plus');
+                break;
+            case 47:
+                calcButton('divide');
+                break;
+            case 27:
+            case 46:
+                calcButton('clear');
+                break;
+            case 106:
+            case 88:
+                calcButton('multiply');
+                break;
+            default:
+                var a = e.which - 48;
+                if (a >= 0 && a <= 9) calcButton(a);
+                else if (a >= 48 && a <= 57) calcButton(a - 48);
+                else alert(e.which);
+                break;
+                //Keys to ignore
+            case 16:
+
         }
     });
     f();
     $(window).resize(f);
     con = $('#numberIn');
+    store = $('#numberStore');
     //removeContextMenu();
 }));
 
-var con;
+var con, store;
 
 function calcButton(btn) {
     if (btn === 'clear') {
         con.html('0');
+        store.html('');
     } else if (btn === 'plus') {
-        transfer('+');
+        if (con.html() !== '') transfer('+');
     } else if (btn === 'minus') {
-        transfer('-');
+        if (con.html() !== '') transfer('-');
     } else if (btn === 'equal') {
 
     } else if (btn === 'divide') {
-        transfer('&divide;');
+        if (con.html() !== '') transfer('&divide;');
     } else if (btn === 'period') {
         if (!con.html().includes('.')) con.append('.');
     } else if (btn === 'multiply') {
-        transfer('<i style="font-size: inherit;" class="material-icons">clear</i>');
+        if (con.html() !== '') transfer('<i style="font-size: inherit;" class="material-icons">clear</i>');
+    } else if (btn === 'back') {
+
+    } else if (btn === 'sqrt') {
+
+    } else if (btn === 'square') {
+
     } else {
         if (con.html() === '0') con.html('');
         con.append(btn);
     }
 }
 
-function transfer(extra = '') {
-    $('#numberStore').html(con.html() + (extra ? ' ' + extra : ''));
-    con.html('');
+function transfer(extra = '', insertZero = true) {
+    store.html(con.html() + (extra ? ' ' + extra : ''));
+    con.html(insertZero ? '0' : '');
 }
 
 function calculate() {

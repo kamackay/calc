@@ -13,21 +13,34 @@ var f = function () {
     var calc = $('body').find('.calculator');
     var numbers = calc.find('.numbers');
     var buttons = calc.find('.btn');
-    if (mobile || win.height() > win.width()) calc.css('width', '100%');
-    else calc.css('width', '60%');
+    if (mobile || win.height() > win.width() * 1.5) calc.css('width', '100%');
+    else {
+        var a = win.width();
+        var n = Math.min(a, a / Math.cbrt(a + 500) + 500);
+        calc.css('width', n);
+    }
     var w = (numbers.width() / 4) - 1;
     $.each(buttons, function (n, o) {
         $(this).css('font-size', size / 2).css('width', w);
     });
+    calc.find('.smaller > *').css('height', (numbers.height() / 5));
     calc.find('.console').css('height', size * 2).css('width', w * 4).css('font-size', w / 4);
     $('#bottomButtons').css('height', size * 3);
 };
 
 ($(document).ready(function () {
     $('#output').html("Output:<br>");
-    $(document).on('keypress', function (e) {
-        var a = e.which - 48;
-        if (a >= 0 && a <= 9) calcButton(a);
+    $(document).on('keydown', function (e) {
+        if (e.which === 190 || e.which === 110) calcButton('period');
+        else if (e.which === 43 || e.which === 107) calcButton('plus');
+        else if (e.which === 47) calcButton('divide');
+        else if (e.which === 27 || e.which === 46) calcButton('clear');
+        else {
+            var a = e.which - 48;
+            if (a >= 0 && a <= 9) calcButton(a);
+            else if (a >= 48 && a <= 57) calcButton(a - 48);
+            else alert(e.which);
+        }
     });
     f();
     $(window).resize(f);
@@ -38,18 +51,21 @@ var con;
 
 function calcButton(btn) {
     if (btn === 'clear') {
-        con.html('');
+        con.html('0');
     } else if (btn === 'plus') {
 
     } else if (btn === 'minus') {
 
     } else if (btn === 'equal') {
 
-    } else if (btn === 'period') {
+    } else if (btn === 'divide') {
 
+    } else if (btn === 'period') {
+        if (!con.html().includes('.')) con.append('.');
     } else if (btn === 'multiply') {
 
     } else {
+        if (con.html() === '0') con.html('');
         con.append(btn);
     }
 }

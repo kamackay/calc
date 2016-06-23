@@ -35,33 +35,34 @@
     <div class="calculator">
         <div class="console" id="console">
             <div id="numberIn">0</div>
-            <div id="numberStore">0</div>
+            <div id="numberStore"></div>
         </div>
         <div class="numbers">
-            <div class="row btn-toolbar">
-                <div onclick="calcButton(1)" data-ripple-color="#ffffff" class="btn btn-num">1</div>
-                <div onclick="calcButton(2)" data-ripple-color="#ffffff" class="btn btn-num">2</div>
-                <div onclick="calcButton(3)" data-ripple-color="#ffffff" class="btn btn-num">3</div>
-                <div onclick="calcButton('clear')" data-ripple-color="#ffffff" class="btn btn-nonnum">C</div>
-            </div>
-            <div class="row btn-toolbar">
-                <div onclick="calcButton(4)" data-ripple-color="#ffffff" class="btn btn-num">4</div>
-                <div onclick="calcButton(5)" data-ripple-color="#ffffff" class="btn btn-num">5</div>
-                <div onclick="calcButton(6)" data-ripple-color="#ffffff" class="btn btn-num">6</div>
-                <div onclick="calcButton('plus')" data-ripple-color="#ffffff" class="btn btn-nonnum">+</div>
-            </div>
-            <div class="row btn-toolbar">
+            <div class="">
                 <div onclick="calcButton(7)" data-ripple-color="#ffffff" class="btn btn-num">7</div>
-                <div onclick="calcButton(8)" data-ripple-color="#ffffff" class="btn btn-num">8</div>
-                <div onclick="calcButton(9)" data-ripple-color="#ffffff" class="btn btn-num">9</div>
-                <div onclick="calcButton('minus')" data-ripple-color="#ffffff" class="btn btn-nonnum">-</div>
+                <div onclick="calcButton(4)" data-ripple-color="#ffffff" class="btn btn-num">4</div>
+                <div onclick="calcButton(1)" data-ripple-color="#ffffff" class="btn btn-num">1</div>
+                <div onclick="calcButton('period')" data-ripple-color="#ffffff" class="btn btn-nonnum">.</div>
             </div>
-            <div class="row btn-toolbar">
-                <div onclick="calcButton('plus')" data-ripple-color="#ffffff" class="btn btn-nonnum">.</div>
+            <div class="">
+                <div onclick="calcButton(8)" data-ripple-color="#ffffff" class="btn btn-num">8</div>
+                <div onclick="calcButton(5)" data-ripple-color="#ffffff" class="btn btn-num">5</div>
+                <div onclick="calcButton(2)" data-ripple-color="#ffffff" class="btn btn-num">2</div>
                 <div onclick="calcButton(0)" data-ripple-color="#ffffff" class="btn btn-num">0</div>
+            </div>
+            <div class="">
+                <div onclick="calcButton(9)" data-ripple-color="#ffffff" class="btn btn-num">9</div>
+                <div onclick="calcButton(6)" data-ripple-color="#ffffff" class="btn btn-num">6</div>
+                <div onclick="calcButton(3)" data-ripple-color="#ffffff" class="btn btn-num">3</div>
                 <div onclick="calcButton('equal')" data-ripple-color="#ffffff" class="btn btn-nonnum">=</div>
+            </div>
+            <div class="smaller">
+                <div onclick="calcButton('clear')" data-ripple-color="#ffffff" class="btn btn-nonnum">C</div>
+                <div onclick="calcButton('plus')" data-ripple-color="#ffffff" class="btn btn-nonnum">+</div>
+                <div onclick="calcButton('minus')" data-ripple-color="#ffffff" class="btn btn-nonnum">-</div>
+                <div onclick="calcButton('divide')" data-ripple-color="#ffffff" class="btn btn-nonnum">/</div>
                 <div onclick="calcButton('multiply')" data-ripple-color="#ffffff" class="btn btn-nonnum">
-                    <i class="material-icons">clear</i>
+                    <i style="font-size: inherit;" class="material-icons">clear</i>
                 </div>
             </div>
         </div>

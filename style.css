@@ -35,6 +35,14 @@ div.page {
     margin: 0px;
 }
 
+.calculator > .numbers>* {
+    display: inline-block;
+}
+
+.calculator > .numbers {
+    font-size: 0px;
+}
+
 .calculator .btn.btn-num:hover {
     background-color: #444444;
 }
@@ -57,6 +65,12 @@ div.page {
     font-size: 40px;
     padding-top: 20px;
     padding-bottom: 20px;
+    display: block;
+}
+
+.calculator .numbers .smaller * {
+    padding: 0px;
+    vertical-align: 
 }
 
 .calculator .console {
@@ -76,7 +90,6 @@ div.page {
 }
 
 #bottomButtons {
-    border: thin #444444 solid;
     margin-right: auto;
     margin-left: auto;
     margin-top: 1px;
@@ -86,6 +99,7 @@ div.page {
     white-space: nowrap;
     display: block;
     position: relative;
+    min-height: 150px;
 }
 
 #numberIn {
@@ -99,4 +113,5 @@ div.page {
     bottom: 0px;
     right: 0px;
     vertical-align: bottom;
+    padding: 15px;
 }

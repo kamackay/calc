@@ -21,7 +21,9 @@ var f = function () {
     }
     var w = (numbers.width() / 4) - 1;
     $.each(buttons, function (n, o) {
-        $(this).css('font-size', size / 2).css('width', w);
+        var t = $(this);
+        t.css('width', w).css('font-size', Math.max(size / 2, 30));
+        t.css('height', Math.max(75, size));
     });
     calc.find('.smaller > *').css('height', (numbers.height() / 5));
     calc.find('.console').css('height', size * 2).css('width', w * 4).css('font-size', w / 4);
@@ -45,6 +47,7 @@ var f = function () {
     f();
     $(window).resize(f);
     con = $('#numberIn');
+    //removeContextMenu();
 }));
 
 var con;
@@ -53,21 +56,26 @@ function calcButton(btn) {
     if (btn === 'clear') {
         con.html('0');
     } else if (btn === 'plus') {
-
+        transfer('+');
     } else if (btn === 'minus') {
-
+        transfer('-');
     } else if (btn === 'equal') {
 
     } else if (btn === 'divide') {
-
+        transfer('&divide;');
     } else if (btn === 'period') {
         if (!con.html().includes('.')) con.append('.');
     } else if (btn === 'multiply') {
-
+        transfer('<i style="font-size: inherit;" class="material-icons">clear</i>');
     } else {
         if (con.html() === '0') con.html('');
         con.append(btn);
     }
+}
+
+function transfer(extra = '') {
+    $('#numberStore').html(con.html() + (extra ? ' ' + extra : ''));
+    con.html('');
 }
 
 function calculate() {

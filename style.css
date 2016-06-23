@@ -4,26 +4,37 @@ div.page {
     margin-right: auto;
 }
 
+.material-icons {
+    font-size: inherit;
+}
+
+body {
+    /**/
+    overflow-y: hidden;
+    /**/
+}
+
 .calculator {
     width: 60%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 10px;
 }
 
 .calculator .btn.btn-num {
     color: white;
     background-color: #444444;
     font-family: 'Hack';
-    border-bottom: thin #009688 solid;
-    border-right: thin #009688 solid;
+    /*border-bottom: thin #009688 solid;
+    border-right: thin #009688 solid;/**/
     margin: 0px;
 }
 
 .calculator .btn.btn-nonnum {
     margin: 0px;
     background-color: #009688;
-    border-bottom: thin #444444 solid;
-    border-right: thin #444444 solid;
+    /*border-bottom: thin #444444 solid;
+    border-right: thin #444444 solid;/**/
 }
 
 .calculator .btn.btn-nonnum:hover {
@@ -49,6 +60,7 @@ div.page {
 
 .calculator .btn {
     border-radius: 0px;
+    text-transform: none;
 }
 
 .calculator row * {
@@ -61,16 +73,25 @@ div.page {
     padding: 0px;
 }
 
+.calculator .numbers .btn * {
+    max-height: inherit;
+    vertical-align: middle;
+}
+
 .calculator .numbers .btn {
     font-size: 40px;
     padding-top: 20px;
     padding-bottom: 20px;
     display: block;
+    height: 100px;
+}
+
+.numbers .btn > img {
+    height: 50%;
 }
 
 .calculator .numbers .smaller * {
     padding: 0px;
-    vertical-align: 
 }
 
 .calculator .console {
@@ -114,4 +135,18 @@ div.page {
     right: 0px;
     vertical-align: bottom;
     padding: 15px;
+}
+
+.btn.togglebutton {
+    padding: 5px;
+    text-transform: none;
+    color: white;
+}
+
+.btn.togglebutton * {
+    color: white;
+    word-wrap: break-word;
+    font-family: sans-serif;
+    white-space: normal;
+    font-size: inherit;
 }

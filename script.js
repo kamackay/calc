@@ -19,12 +19,16 @@ var f = function () {
     $.each(buttons, function (n, o) {
         $(this).css('font-size', size / 2).css('width', w);
     });
-    calc.find('.console').css('height', size * 2).css('width', w * 4);
+    calc.find('.console').css('height', size * 2).css('width', w * 4).css('font-size', w / 4);
     $('#bottomButtons').css('height', size * 3);
 };
 
 ($(document).ready(function () {
     $('#output').html("Output:<br>");
+    $(document).on('keypress', function (e) {
+        var a = e.which - 48;
+        if (a >= 0 && a <= 9) calcButton(a);
+    });
     f();
     $(window).resize(f);
     con = $('#numberIn');

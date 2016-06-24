@@ -75,6 +75,12 @@ var f = function () {
     con = $('#numberIn');
     store = $('#numberStore');
     //removeContextMenu();
+    if (isMobileDevice()) {
+        var elems = $('body').find('.calculator.well')
+        $.each(elems, function (n, o) {
+            $(this).removeClass('well');
+        });
+    }
 }));
 
 var con, store;

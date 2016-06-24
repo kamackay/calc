@@ -18,7 +18,8 @@ body {
     width: 60%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
+    margin-top: 20px;
+    height: 90vh;
 }
 
 .calculator .btn.btn-num {
@@ -46,7 +47,7 @@ body {
     margin: 0px;
 }
 
-.calculator > .numbers>* {
+.calculator > .numbers > * {
     display: inline-block;
 }
 

@@ -63,7 +63,7 @@ var f = function () {
                 var a = e.which - 48;
                 if (a >= 0 && a <= 9) calcButton(a);
                 else if (a >= 48 && a <= 57) calcButton(a - 48);
-                else alert(e.which);
+                //else alert(e.which);
                 break;
                 //Keys to ignore
             case 16:

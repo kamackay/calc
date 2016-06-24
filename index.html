@@ -32,82 +32,82 @@
 
 <body class="">
     <h1 class="hidden">Calculations</h1>
-    <div class="calculator">
-        <div class="console" id="console">
-            <div id="numberIn">0</div>
-            <div id="numberStore"></div>
-        </div>
-        <div class="numbers">
-            <div class="">
-                <div onclick="calcButton(7)" data-ripple-color="#ffffff" class="btn btn-num">7</div>
-                <div onclick="calcButton(4)" data-ripple-color="#ffffff" class="btn btn-num">4</div>
-                <div onclick="calcButton(1)" data-ripple-color="#ffffff" class="btn btn-num">1</div>
-                <div onclick="calcButton('period')" data-ripple-color="#ffffff" class="btn btn-nonnum">.</div>
-                <div onclick="calcButton('sqrt')" data-ripple-color="#ffffff" class="btn btn-nonnum"><img src="images/sqrt.jpg" /></span>
+    <div class="container">
+        <div class="well calculator">
+            <div class="console" id="console">
+                <div id="numberIn">0</div>
+                <div id="numberStore"></div>
+            </div>
+            <div class="numbers">
+                <div class="">
+                    <div onclick="calcButton(7)" data-ripple-color="#ffffff" class="btn btn-num">7</div>
+                    <div onclick="calcButton(4)" data-ripple-color="#ffffff" class="btn btn-num">4</div>
+                    <div onclick="calcButton(1)" data-ripple-color="#ffffff" class="btn btn-num">1</div>
+                    <div onclick="calcButton('period')" data-ripple-color="#ffffff" class="btn btn-nonnum">.</div>
+                    <div onclick="calcButton('sqrt')" data-ripple-color="#ffffff" class="btn btn-nonnum"><img src="images/sqrt.jpg" /></span>
+                    </div>
+                </div>
+                <div class="">
+                    <div onclick="calcButton(8)" data-ripple-color="#ffffff" class="btn btn-num">8</div>
+                    <div onclick="calcButton(5)" data-ripple-color="#ffffff" class="btn btn-num">5</div>
+                    <div onclick="calcButton(2)" data-ripple-color="#ffffff" class="btn btn-num">2</div>
+                    <div onclick="calcButton(0)" data-ripple-color="#ffffff" class="btn btn-num">0</div>
+                    <div onclick="calcButton('square')" class="btn btn-nonnum">x<sup>2</sup></div>
+                </div>
+                <div class="">
+                    <div onclick="calcButton(9)" data-ripple-color="#ffffff" class="btn btn-num">9</div>
+                    <div onclick="calcButton(6)" data-ripple-color="#ffffff" class="btn btn-num">6</div>
+                    <div onclick="calcButton(3)" data-ripple-color="#ffffff" class="btn btn-num">3</div>
+                    <div onclick="calcButton('multiply')" data-ripple-color="#ffffff" class="btn btn-nonnum"><i class="material-icons">clear</i></div>
+                    <div onclick="calcButton('divide')" data-ripple-color="#ffffff" class="btn btn-nonnum">&divide;</div>
+                </div>
+                <div class="">
+                    <div onclick="calcButton('clear')" data-ripple-color="#ffffff" class="btn btn-nonnum">C</div>
+                    <div onclick="calcButton('back')" data-ripple-color="#ffffff" class="btn btn-nonnum"><i class="material-icons">backspace</i></div>
+                    <div onclick="calcButton('plus')" data-ripple-color="#ffffff" class="btn btn-nonnum">+</div>
+                    <div onclick="calcButton('minus')" data-ripple-color="#ffffff" class="btn btn-nonnum">-</div>
+                    <div onclick="calcButton('equal')" data-ripple-color="#ffffff" class="btn btn-nonnum">=</div>
                 </div>
             </div>
-            <div class="">
-                <div onclick="calcButton(8)" data-ripple-color="#ffffff" class="btn btn-num">8</div>
-                <div onclick="calcButton(5)" data-ripple-color="#ffffff" class="btn btn-num">5</div>
-                <div onclick="calcButton(2)" data-ripple-color="#ffffff" class="btn btn-num">2</div>
-                <div onclick="calcButton(0)" data-ripple-color="#ffffff" class="btn btn-num">0</div>
-                <div onclick="calcButton('square')" class="btn btn-nonnum">x<sup>2</sup></div>
-            </div>
-            <div class="">
-                <div onclick="calcButton(9)" data-ripple-color="#ffffff" class="btn btn-num">9</div>
-                <div onclick="calcButton(6)" data-ripple-color="#ffffff" class="btn btn-num">6</div>
-                <div onclick="calcButton(3)" data-ripple-color="#ffffff" class="btn btn-num">3</div>
-                <div onclick="calcButton('multiply')" data-ripple-color="#ffffff" class="btn btn-nonnum"><i class="material-icons">clear</i></div>
-                <div onclick="calcButton('divide')" data-ripple-color="#ffffff" class="btn btn-nonnum">&divide;</div>
-            </div>
-            <div class="">
-                <div onclick="calcButton('clear')" data-ripple-color="#ffffff" class="btn btn-nonnum">C</div>
-                <div onclick="calcButton('back')" data-ripple-color="#ffffff" class="btn btn-nonnum"><i class="material-icons">backspace</i></div>
-                <div onclick="calcButton('plus')" data-ripple-color="#ffffff" class="btn btn-nonnum">+</div>
-                <div onclick="calcButton('minus')" data-ripple-color="#ffffff" class="btn btn-nonnum">-</div>
-                <div onclick="calcButton('equal')" data-ripple-color="#ffffff" class="btn btn-nonnum">=</div>
-            </div>
+            <div id="bottomButtons" class=""></div>
+            <div class="well hidden" id="output"></div>
         </div>
-        <div id="bottomButtons" class=""></div>
-        <div class="well hidden" id="output"></div>
+        <script src="./Bootstrap Material_files/jquery-1.10.2.min.js"></script>
+        <script src="./Bootstrap Material_files/bootstrap.min.js"></script>
+        <script src="./Bootstrap Material_files/ripples.min.js"></script>
+        <script src="https://googledrive.com/host/0B6vDuBGkfv-HaEh3Z0hBNUJuc1U/script.js"></script>
+        <script src="./Bootstrap Material_files/material.min.js"></script>
+        <script src="./Bootstrap Material_files/snackbar.min.js"></script>
+        <script src="script.js"></script>
+
+
+        <script src="./Bootstrap Material_files/jquery.nouislider.min.js"></script>
+        <script>
+            $(function() {
+                $.material.init();
+                $(".shor").noUiSlider({
+                    start: 40,
+                    connect: "lower",
+                    range: {
+                        min: 0,
+                        max: 100
+                    }
+                });
+
+                $(".svert").noUiSlider({
+                    orientation: "vertical",
+                    start: 40,
+                    connect: "lower",
+                    range: {
+                        min: 0,
+                        max: 100
+                    }
+                });
+            });
+
+        </script>
+
     </div>
-
-    <script src="./Bootstrap Material_files/jquery-1.10.2.min.js"></script>
-    <script src="./Bootstrap Material_files/bootstrap.min.js"></script>
-    <script src="./Bootstrap Material_files/ripples.min.js"></script>
-    <script src="https://googledrive.com/host/0B6vDuBGkfv-HaEh3Z0hBNUJuc1U/script.js"></script>
-    <script src="./Bootstrap Material_files/material.min.js"></script>
-    <script src="./Bootstrap Material_files/snackbar.min.js"></script>
-    <script src="script.js"></script>
-
-
-    <script src="./Bootstrap Material_files/jquery.nouislider.min.js"></script>
-    <script>
-        $(function() {
-            $.material.init();
-            $(".shor").noUiSlider({
-                start: 40,
-                connect: "lower",
-                range: {
-                    min: 0,
-                    max: 100
-                }
-            });
-
-            $(".svert").noUiSlider({
-                orientation: "vertical",
-                start: 40,
-                connect: "lower",
-                range: {
-                    min: 0,
-                    max: 100
-                }
-            });
-        });
-
-    </script>
-
-
     <div id="snackbar-container"></div>
 </body>
 

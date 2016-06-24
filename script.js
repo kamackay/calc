@@ -77,7 +77,7 @@ var f = function () {
     //removeContextMenu();
     /**/
     if (isMobileDevice()) {
-        var elems = $('body').find('.calculator.well')
+        var elems = $('body').find('.calculator.well');
         $.each(elems, function (n, o) {
             $(this).removeClass('well');
         });

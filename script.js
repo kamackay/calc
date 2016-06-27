@@ -71,16 +71,24 @@ var f = function () {
             case 88:
                 calcButton('multiply');
                 break;
+            case 116:
+                e.preventDefault();
+                showSnackbar('Refresh disabled. Just to be a dick.');
+                break;
             default:
                 var a = e.which - 48;
                 if (a >= 0 && a <= 9) calcButton(a);
                 else if (a >= 48 && a <= 57) calcButton(a - 48);
-                //else alert(e.which);
+                else alert(e.which);
                 break;
                 //Keys to ignore
             case 16:
 
         }
+    });
+    $('#numberStore').mousewheel(function (event, delta) {
+        this.scrollLeft -= (delta * 30);
+        event.preventDefault();
     });
     f();
     $(window).resize(f);
@@ -174,19 +182,26 @@ function eq(num) {
     store.append('= ' + num.toString() + ' ');
 }
 
+function allPrimes() {
+    var n = parseFloat(con.html());
+    store.html(getAllPrimes(n));
+}
+
 function getAllPrimes(n = 50) {
-    showInOutput('<br>Primes of ' + n.toString());
+    var res = 'Primes of ' + n.toString() + ' = [';
     while (n % 2 == 0) {
-        showInOutput('    2');
+        res += '2, ';
         n = n / 2;
     }
     for (var i = 3; i <= Math.sqrt(n); i = i + 2) {
         while (n % i == 0) {
-            showInOutput(i.toString());
+            res += i.toString() + ', ';
             n = n / i;
         }
     }
-    if (n > 2) showInOutput(n.toString());
+    if (n > 2) res += n.toString() + ', ';
+    res = res.trim().replace(/,\s*$/, "") + ']';
+    return res;
 }
 
 var last;

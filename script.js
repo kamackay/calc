@@ -13,7 +13,7 @@ var f = function () {
     var mobile = isMobileDevice();
     var calc = $('body').find('.calculator');
     var numbers = calc.find('.numbers');
-    var buttons = calc.find('.btn');
+    var buttons = calc.find('.btn:not(.btn-small)');
     if (mobile || win.height() > win.width() * 1.5) calc.css('width', '100%');
     else {
         var a = win.width();
@@ -108,16 +108,18 @@ function calcButton(btn) {
         calc = calcTypes.none;
     } else if (btn === 'divide') {
         if (con.html() !== '') transfer('&divide;');
+        calc = calcTypes.divide;
     } else if (btn === 'period') {
         if (!con.html().includes('.')) con.append('.');
     } else if (btn === 'multiply') {
         if (con.html() !== '') transfer('<i style="font-size: inherit;" class="material-icons">clear</i>');
+        calc = calcTypes.multiply;
     } else if (btn === 'back') {
 
     } else if (btn === 'sqrt') {
-
+        notSupported();
     } else if (btn === 'square') {
-
+        notSupported();
     } else {
         if (con.html() === '0') con.html('');
         con.append(btn);

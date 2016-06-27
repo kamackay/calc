@@ -114,7 +114,13 @@ body {
 #bottomButtons {
     margin-right: auto;
     margin-left: auto;
-    margin-top: 1px;
+    margin-top: 10px;
+}
+
+#bottomButtons *.btn {
+    display: inline;
+    padding: 10px;
+    font-size: 20px;
 }
 
 #console {

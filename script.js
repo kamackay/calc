@@ -6,6 +6,7 @@ function showInOutput(str, newLn = true, tab = 0) {
 }
 var win = $(window);
 
+const5555 maxWidth = 600;
 
 var f = function () {
     var size = win.height() / 10;
@@ -16,7 +17,7 @@ var f = function () {
     if (mobile || win.height() > win.width() * 1.5) calc.css('width', '100%');
     else {
         var a = win.width();
-        var n = Math.min(a, a / Math.cbrt(a + 500) + 500);
+        var n = Math.min(a, a / Math.cbrt(a + maxWidth) + maxWidth);
         calc.css('width', n);
     }
     var w = (numbers.width() / 4) - 1;
@@ -82,6 +83,7 @@ var f = function () {
             $(this).removeClass('well');
         });
     } /**/
+    window.setInterval(f, 1000);
 }));
 
 var con, store;
@@ -90,12 +92,25 @@ function calcButton(btn) {
     if (btn === 'clear') {
         con.html('0');
         store.html('');
+        calc = calcTypes.none;
     } else if (btn === 'plus') {
         if (con.html() !== '') transfer('+');
+        calc = calcTypes.add;
     } else if (btn === 'minus') {
         if (con.html() !== '') transfer('-');
     } else if (btn === 'equal') {
-
+        if (calc === calcTypes.none) {
+            eq(con.html());
+        } else if (calc === calcTypes.add) {
+            try {
+                var n = parseFloat(con.html());
+                store.append(' ' + n.toString() + " ");
+                eq(n + last);
+            } catch (err) {
+                alert(err);
+            }
+        }
+        calc = calcTypes.none;
     } else if (btn === 'divide') {
         if (con.html() !== '') transfer('&divide;');
     } else if (btn === 'period') {
@@ -116,7 +131,13 @@ function calcButton(btn) {
 
 function transfer(extra = '', insertZero = true) {
     store.html(con.html() + (extra ? ' ' + extra : ''));
+    last = parseFloat(con.html());
     con.html(insertZero ? '0' : '');
+}
+
+function eq(num) {
+    con.html('');
+    store.append('= ' + num.toString() + ' ');
 }
 
 function calculate() {
@@ -137,3 +158,16 @@ function getAllPrimes(n = 50) {
     }
     if (n > 2) showInOutput(n.toString());
 }
+
+var calcTypes = {
+    none: 0,
+    add: 1,
+    minus: 2,
+    multiply: 3,
+    divide: 4,
+    exp: 5
+};
+
+var last;
+
+var calc = calcTypes.none;

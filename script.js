@@ -1,4 +1,4 @@
-const maxWidth = 600;
+const maxWidth = 700;
 
 
 const calcTypes = {
@@ -45,49 +45,50 @@ var f = function () {
 ($(document).ready(function () {
     $('#output').html("Output:<br>");
     $(document).on('keydown', function (e) {
-        switch (e.which) {
-            case 8:
-                calcButton('back');
-                break;
-            case 115:
-                if (e.ctrlKey || e.which === 19) e.preventDefault();
-                break;
-            case 13:
-                calcButton('equal');
-                break;
-            case 190:
-            case 110:
-                calcButton('period');
-                break;
-            case 43:
-            case 107:
-                calcButton('plus');
-                break;
-            case 47:
-                calcButton('divide');
-                break;
-            case 27:
-            case 46:
-                calcButton('clear');
-                break;
-            case 106:
-            case 88:
-                calcButton('multiply');
-                break;
-            case 116:
-                e.preventDefault();
-                showSnackbar('Refresh disabled. Just to be a dick.');
-                break;
-            default:
-                var a = e.which - 48;
-                if (a >= 0 && a <= 9) calcButton(a);
-                else if (a >= 48 && a <= 57) calcButton(a - 48);
-                //else alert(e.which);
-                break;
-                //Keys to ignore
-            case 16:
+        if (e.shift)
+            switch (e.which) {
+                case 8:
+                    calcButton('back');
+                    break;
+                case 115:
+                    if (e.ctrlKey || e.which === 19) e.preventDefault();
+                    break;
+                case 13:
+                    calcButton('equal');
+                    break;
+                case 190:
+                case 110:
+                    calcButton('period');
+                    break;
+                case 43:
+                case 107:
+                    calcButton('plus');
+                    break;
+                case 47:
+                    calcButton('divide');
+                    break;
+                case 27:
+                case 46:
+                    calcButton('clear');
+                    break;
+                case 106:
+                case 88:
+                    calcButton('multiply');
+                    break;
+                case 116:
+                    e.preventDefault();
+                    showSnackbar('Refresh disabled. Just to be a dick.');
+                    break;
+                default:
+                    var a = e.which - 48;
+                    if (a >= 0 && a <= 9) calcButton(a);
+                    else if (a >= 48 && a <= 57) calcButton(a - 48);
+                    else alert(e.which);
+                    break;
+                    //Keys to ignore
+                case 16:
 
-        }
+            }
     });
     $('#numberStore').mousewheel(function (event, delta) {
         this.scrollLeft -= (delta * 30);
@@ -142,8 +143,9 @@ function calcButton(btn) {
             con.html(current.substr(0, current.length - 1));
     } else if (btn === 'sqrt') {
         notSupported();
-    } else if (btn === 'square') {
+    } else if (btn === 'exp') {
         notSupported();
+        if (con.html() !== '') transfer('^');
     } else {
         if (con.html() === '0') con.html('');
         con.append(btn);

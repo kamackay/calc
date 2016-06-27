@@ -1,12 +1,23 @@
+const maxWidth = 600;
+
+
+const calcTypes = {
+    none: 0,
+    add: 1,
+    minus: 2,
+    multiply: 3,
+    divide: 4,
+    exp: 5,
+    solution: 6
+};
+
 function showInOutput(str, newLn = true, tab = 0) {
     var out = $('#output');
     if (newLn) out.append('<br>');
     for (var i = 0; i < tab; i++) out.append('    ');
     out.append(str);
 }
-var win = $(window);
-
-const maxWidth = 600;
+const win = $(window);
 
 var f = function () {
     var size = win.height() / 10;
@@ -102,7 +113,7 @@ function calcButton(btn) {
     } else if (btn === 'equal') { //---------Equal
         if (calc === calcTypes.none) {
             eq(con.html());
-        } else if (calc === calcTypes.add || calc === calcTypes.minus) {
+        } else if (calc === calcTypes.add || calc === calcTypes.minus || calc === calcTypes.multiply || calc === calcTypes.divide) {
             basicCalc(calc);
         }
         calc = calcTypes.none;
@@ -138,6 +149,12 @@ function basicCalc(kind) {
             case calcTypes.minus:
                 solution = last - n;
                 break;
+            case calcTypes.divide:
+                solution = last / n;
+                break;
+            case calcTypes.multiply:
+                solution = last * n;
+                break;
         }
         eq(solution);
         con.html(solution.toString());
@@ -157,10 +174,6 @@ function eq(num) {
     store.append('= ' + num.toString() + ' ');
 }
 
-function calculate() {
-    getAllPrimes(parseInt($('#numberInput').val()));
-}
-
 function getAllPrimes(n = 50) {
     showInOutput('<br>Primes of ' + n.toString());
     while (n % 2 == 0) {
@@ -175,16 +188,6 @@ function getAllPrimes(n = 50) {
     }
     if (n > 2) showInOutput(n.toString());
 }
-
-var calcTypes = {
-    none: 0,
-    add: 1,
-    minus: 2,
-    multiply: 3,
-    divide: 4,
-    exp: 5,
-    solution: 6
-};
 
 var last;
 

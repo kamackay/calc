@@ -106,13 +106,15 @@ var f = function () {
     $(window).resize(f);
     con = $('#numberIn');
     store = $('#numberStore');
-    //removeContextMenu();
+    removeContextMenu();
     /**/
     if (isMobileDevice()) {
         var elems = $('body').find('.calculator.well');
         $.each(elems, function (n, o) {
             $(this).removeClass('well');
         });
+    } else {
+        showWatermark();
     } /**/
     window.setInterval(f, 1000);
 }));
@@ -149,7 +151,7 @@ function calcButton(btn) {
         if (current.length > 0)
             con.html(current.substr(0, current.length - 1));
     } else if (btn === 'sqrt') {
-        notSupported();
+
     } else if (btn === 'exp') {
         if (con.html() !== '') transfer('^');
         calc = calcTypes.exp;

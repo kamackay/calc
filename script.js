@@ -93,19 +93,22 @@ function calcButton(btn) {
         con.html('0');
         store.html('');
         calc = calcTypes.none;
-    } else if (btn === 'plus') {
+    } else if (btn === 'plus') { //-----------Addition
         if (con.html() !== '') transfer('+');
-        calc = calcTypes.add;
+        calc = calcTypes.add; //--------------Subtraction
     } else if (btn === 'minus') {
         if (con.html() !== '') transfer('-');
-    } else if (btn === 'equal') {
+    } else if (btn === 'equal') { //---------Equal
         if (calc === calcTypes.none) {
             eq(con.html());
         } else if (calc === calcTypes.add) {
+            var solution;
             try {
                 var n = parseFloat(con.html());
                 store.append(' ' + n.toString() + " ");
-                eq(n + last);
+                solution = n + last;
+                eq(solution);
+                con.html(solution.toString());
             } catch (err) {
                 alert(err);
             }
@@ -165,7 +168,8 @@ var calcTypes = {
     minus: 2,
     multiply: 3,
     divide: 4,
-    exp: 5
+    exp: 5,
+    solution: 6
 };
 
 var last;

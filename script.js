@@ -98,20 +98,12 @@ function calcButton(btn) {
         calc = calcTypes.add; //--------------Subtraction
     } else if (btn === 'minus') {
         if (con.html() !== '') transfer('-');
+        calc = calcTypes.minus;
     } else if (btn === 'equal') { //---------Equal
         if (calc === calcTypes.none) {
             eq(con.html());
-        } else if (calc === calcTypes.add) {
-            var solution;
-            try {
-                var n = parseFloat(con.html());
-                store.append(' ' + n.toString() + " ");
-                solution = n + last;
-                eq(solution);
-                con.html(solution.toString());
-            } catch (err) {
-                alert(err);
-            }
+        } else if (calc === calcTypes.add || calc === calcTypes.minus) {
+            basicCalc(calc);
         }
         calc = calcTypes.none;
     } else if (btn === 'divide') {
@@ -129,6 +121,26 @@ function calcButton(btn) {
     } else {
         if (con.html() === '0') con.html('');
         con.append(btn);
+    }
+}
+
+function basicCalc(kind) {
+    var solution;
+    try {
+        var n = parseFloat(con.html());
+        store.append(' ' + n.toString() + " ");
+        switch (kind) {
+            case calcTypes.add:
+                solution = last + n;
+                break;
+            case calcTypes.minus:
+                solution = last - n;
+                break;
+        }
+        eq(solution);
+        con.html(solution.toString());
+    } catch (err) {
+        alert(err);
     }
 }
 

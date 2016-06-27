@@ -46,6 +46,9 @@ var f = function () {
     $('#output').html("Output:<br>");
     $(document).on('keydown', function (e) {
         switch (e.which) {
+            case 8:
+                calcButton('back');
+                break;
             case 115:
                 if (e.ctrlKey || e.which === 19) e.preventDefault();
                 break;
@@ -134,7 +137,9 @@ function calcButton(btn) {
         if (con.html() !== '') transfer('<i style="font-size: inherit;" class="material-icons">clear</i>');
         calc = calcTypes.multiply;
     } else if (btn === 'back') {
-
+        var current = con.html();
+        if (current.length > 0)
+            con.html(current.substr(0, current.length - 1));
     } else if (btn === 'sqrt') {
         notSupported();
     } else if (btn === 'square') {

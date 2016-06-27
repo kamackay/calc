@@ -6,7 +6,7 @@ function showInOutput(str, newLn = true, tab = 0) {
 }
 var win = $(window);
 
-const5555 maxWidth = 600;
+const maxWidth = 600;
 
 var f = function () {
     var size = win.height() / 10;

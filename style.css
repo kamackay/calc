@@ -115,7 +115,7 @@ body {
 
 #bottomButtons {
     width: 100%;
-    height: 10vh;
+    max-height: 10vh;
     margin-top: 10px;
     overflow-x: auto;
     overflow-y: hidden;
